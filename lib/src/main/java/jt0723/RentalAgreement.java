@@ -42,7 +42,11 @@ public class RentalAgreement {
         final int extraDays = rentalDays % 7;
         int weekendCount = rentalWeeks * 2;
         for (int i = 1; i <= extraDays; i++) {
-            final DayOfWeek dayOfWeek = DayOfWeek.of(checkoutDayOfWeek + i);
+            int dayOfWeekInt = (checkoutDayOfWeek + i) % 7;
+            if (dayOfWeekInt == 0) {
+                dayOfWeekInt = 7;
+            }
+            final DayOfWeek dayOfWeek = DayOfWeek.of(dayOfWeekInt);
             if (dayOfWeek.equals(DayOfWeek.SATURDAY) || dayOfWeek.equals(DayOfWeek.SUNDAY)) {
                 weekendCount++;
             }
@@ -60,7 +64,21 @@ public class RentalAgreement {
             }
         }
         // independence day
-        
+        for (int y = checkoutDate.getYear(); y <= dueDate.getYear(); y++) {
+            final LocalDate july4 = LocalDate.of(y, 7, 4);
+            final DayOfWeek july4DayOfWeek = DayOfWeek.of(july4.get(ChronoField.DAY_OF_WEEK));
+            LocalDate independence = july4;
+            if (july4DayOfWeek.equals(DayOfWeek.SATURDAY)) {
+                independence = july4.minusDays(1);
+            } else if (july4DayOfWeek.equals(DayOfWeek.SUNDAY)) {
+                independence = july4.plusDays(1);
+            }
+            if ((independence.isAfter(checkoutDate) && independence.isBefore(dueDate)) || independence.equals(dueDate)) {
+                holidayCount++;
+                weekdayCount--;
+            }
+        }
+
         int chargeableDayCount = 0;
         if (toolType.weekdayCharge) {
             chargeableDayCount += weekdayCount;
