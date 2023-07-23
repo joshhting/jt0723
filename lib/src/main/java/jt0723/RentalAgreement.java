@@ -124,7 +124,12 @@ public class RentalAgreement {
         sb.append(df.format(discountAmount));
         sb.append("\nFinal charge: $");
         sb.append(df.format(finalCharge));
+        sb.append("\n");
 
         return sb.toString();
+    }
+
+    public void printReport() {
+        System.out.println(toString());
     }
 }
