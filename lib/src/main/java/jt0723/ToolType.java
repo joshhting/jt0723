@@ -1,5 +1,8 @@
 package jt0723;
 
+/**
+ * Contains charge info for each tool type
+ */
 public enum ToolType {
     LADDER("Ladder", 1.99, true, true, false),
     CHAINSAW("Chainsaw", 1.49, true, false, true),

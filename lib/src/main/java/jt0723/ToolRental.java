@@ -2,6 +2,9 @@ package jt0723;
 
 import java.time.LocalDate;
 
+/**
+ * Entry point of the tool rental application.
+ */
 public class ToolRental {
     public RentalAgreement checkout(final Tool tool, final int days, final int discount, final LocalDate date) {
         if (days < 1) {
