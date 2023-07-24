@@ -8,6 +8,9 @@ This is a simple tool rental application.
 * Clerks may give customers a discount that is applied to the total daily charges to reduce the final
 charge.
 
+## Usage
+You can interface with this application by calling `ToolRental.checkout(Tool tool, int checkoutDays, int discount, LocalDate checkoutDate)`.
+
 ## Development
 
 To build the project and run tests: `./gradlew build`
