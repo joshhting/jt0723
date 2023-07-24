@@ -13,6 +13,6 @@ You can interface with this application by calling `ToolRental.checkout(Tool too
 
 ## Development
 
-To build the project and run tests: `./gradlew build`
+This project was developed with Gradle 7.2 and JDK 17.0.7. To build the project and run tests: `./gradlew build`
 
 Test report can be found here: `lib/build/reports/tests/test/index.html`. Rental agreement outputs can be found under the "Standard Output" section of the test report.
